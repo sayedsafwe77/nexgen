@@ -1,0 +1,148 @@
+<?php
+
+return [
+    'plural' => 'Settings',
+    'permission' => 'Manage Settings',
+    'actions' => [
+        'save' => 'Save',
+    ],
+    'tabs' => [
+        'main' => 'Main Settings',
+        'contacts' => 'Contact Information',
+        'mail' => 'Mail Credentials',
+        'pusher' => 'Pusher Credentials',
+        'about' => 'About Us',
+        'qutation' => 'Qutation',
+
+        'service' => 'Service',
+        'terms' => 'Terms & Conditions',
+        'privacy' => 'Privacy Policy',
+    ],
+    'dashboard_templates' => [
+        'adminlte3' => 'Adminlte 3',
+        'vali' => 'Vali',
+    ],
+    'frontend_templates' => [],
+    'messages' => [
+        'updated' => 'Application settings has been updated successfully.',
+    ],
+    'attributes' => [
+        'name' => 'Application Name',
+        '%name%' => 'Application Name',
+        'dashboard_template' => 'Dashboard Template',
+        'frontend_template' => 'Frontend Template',
+        'facebook' => 'Facebook',
+        'twitter' => 'Twitter',
+
+        'instagram' => 'Instagram',
+        'down_payment' => 'Down Payment',
+        'remaining_payment' => 'Remaining Payment',
+        'additional' => 'Additional',
+
+        'remaining_hour' => 'Remaining Hour',
+        'tax' => 'Tax',
+        'snapchat' => 'Snapchat',
+        'apple' => 'Apple Link',
+        'android' => 'Android Link',
+        'phone' => 'Contact Phone',
+        'email' => 'Contact E-mail',
+        'copyright' => 'Copyright',
+        '%copyright%' => 'Copyright',
+        'logo' => 'Logo',
+        'favicon' => 'Favicon',
+        'about' => 'About Us',
+        'terms' => 'Terms & Conditions',
+        'privacy' => 'Privacy Policy',
+        'mail_driver' => 'Mail Driver',
+        'mail_host' => 'Mail Host',
+        'mail_port' => 'Mail Port',
+        'mail_username' => 'Mail Username',
+        'mail_password' => 'Mail Password',
+        'mail_encryption' => 'Mail Encryption',
+        'mail_from_address' => 'Mail From Address',
+        'mail_from_name' => 'Mail From Name',
+        'broadcast_driver' => 'Broadcast Driver',
+        'pusher_app_id' => 'Pusher App ID',
+        'pusher_app_key' => 'Pusher App Key',
+        'pusher_app_secret' => 'Pusher App Secret',
+        'pusher_app_cluster' => 'Pusher App Cluster',
+        'pusher_app_host' => 'Pusher App Host',
+        'pusher_app_port' => 'Pusher App Port',
+        'pusher_app_encrypted' => 'Pusher App Encrypted',
+        'pusher_app_scheme' => 'Pusher App Scheme',
+        'about_home_title'  => 'About Home : Title',
+        'about_home_subtitle'   => 'About Home : SubTitle',
+        'about_home_des'    => 'About Home : Description',
+        'about_home_youtube_link'   => 'About Home : Youtube Video Link',
+        'about_home_img'    => 'About Home : Image',
+        'online_business_title'     => 'Online Business : Title',
+        'online_business_subtitle'  => 'Online Business : SubTitle',
+        'online_business_des'   => 'Online Business : Description',
+        'online_business_img'   => 'Online Business : Image',
+        'online_business_feature'   => 'Online Business : Feature',
+        'online_business_feature_img_1'     => 'Online Business : Feature Image 1',
+        'online_business_feature_img_2'     => 'Online Business : Feature Image 2',
+        'online_business_feature_img_3'     => 'Online Business : Feature Image 3',
+        'online_business_feature_img_4'     => 'Online Business : Feature Image 4',
+        'work_flow_step'    => 'Work Flow : Step',
+        'work_flow_step_img_1'  => 'Work Flow : Step Image 1',
+        'work_flow_step_img_2'  => 'Work Flow : Step Image 2',
+        'work_flow_step_img_3'  => 'Work Flow : Step Image 3',
+        'work_flow_step_img_4'  => 'Work Flow : Step Image 4',
+        'countact_us_title'     => 'Countact Us : Title',
+        'countact_us_des'   => 'Countact Us : Description',
+        'linkedin'  => 'LinkedIn',
+        'whatsapp'  => 'WhatsApp',
+
+        'address'   => 'Address',
+        'mobile'   => 'Mobile',
+
+        'service_title' => 'Home Service : Title',
+        'service_subtitle' => 'Home Service : Sub Title',
+        'service_des' => 'Home Service : Description',
+        'about_title' => 'About Page : Title',
+        'about_subtitle' => 'About Page : SubTitle',
+        'about_des' => 'About Page : Description',
+        'about_img' => 'About Page : Image',
+        'about_background_img' => 'About Page : Background Image',
+
+        'us_the_best_background_img' => 'About Page : Us The Best : Background Image',
+        'us_the_best_title' => 'About Page : Us The Best : Title',
+        'us_the_best_subtitle' => 'About Page : Us The Best : Sub Title',
+        'us_the_best_des' => 'About Page : Us The Best : Description',
+
+
+        'work_together_title' => 'About Page : Work Together : Title',
+        'work_together_subtitle' => 'About Page : Work Together : Sub Title',
+        'work_together_img' => 'About Page : Work Together : Image',
+        'work_together_reasons' => 'About Page : Work Together : Reasons',
+
+
+
+        'service_page_title' => ' صفحة الخدمات : العنوان الرئيسي',
+        'service_page_background_img' => ' صفحة الخدمات : الصوره الخلفيه',
+        'best_match_img' => ' صفحة الخدمات : قسم لماذا نحن الأنسب : الصورة الجانبيه',
+        'best_match_title' => ' صفحة الخدمات : قسم لماذا نحن الأنسب : العنوان الرئيسي',
+        'best_match_des' => ' صفحة الخدمات : قسم لماذا نحن الأنسب : الوصف',
+        'best_match_reasons' => 'صفحة الخدمات : قسم لماذا نحن الأنسب : سبب',
+
+
+        'contact_page_background_img' => 'صفحة اتصل بنا : الصوره الخلفيه',
+        'contact_page_phone_icon' => 'صفحة اتصل بنا : ايقونه الهاتف',
+        'contact_page_email_icon' => 'صفحة اتصل بنا : ايقونه البريد الالكتروني',
+        'contact_page_location_icon' => 'صفحة اتصل بنا : ايقونه العنوان',
+        'contact_page_title' => 'صفحة اتصل بنا : عنوان الصفحه',
+        'contact_page_phone_des' => 'صفحة اتصل بنا : وصف الهاتف',
+        'contact_page_email_des' => 'صفحة اتصل بنا : وصف البريد الالكتروني',
+        'contact_page_location_des' => 'صفحة اتصل بنا : وصف العنوان',
+
+        'get_in_touch_subtitle' => 'صفحة اتصل بنا : قسم ابقي علي تواصل : العنوان الفرعي ',
+        'get_in_touch_title' => 'صفحة اتصل بنا : قسم ابقي علي تواصل : العنوان الرئيسي ',
+        'get_in_touch_des' => 'صفحة اتصل بنا : قسم ابقي علي تواصل : العنوان الوصف ',
+
+
+
+
+
+    ],
+];
