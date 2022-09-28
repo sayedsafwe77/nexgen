@@ -43,10 +43,9 @@ class DatabaseSeeder extends Seeder
             'phone' => '333333333',
         ]);
 
-        $this->call([
-            DummyDataSeeder::class,
-        ]);
-
+        // $this->call([
+        //     DummyDataSeeder::class,
+        // ]);
         $this->command->table(['ID', 'Name', 'Email', 'Phone', 'Password', 'Type', 'Type Code'], [
             [$admin->id, $admin->name, $admin->email, $admin->phone, 'password', 'Admin', $admin->type],
             [

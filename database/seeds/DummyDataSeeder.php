@@ -17,9 +17,8 @@ class DummyDataSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(FeedbackSeeder::class);
         $this->call(ProductSeeder::class);
-$this->call(QutationSeeder::class);
-$this->call(CategorySeeder::class);
-/*  The seeders of generated crud will set here: Don't remove this line  */
-
+        $this->call(QutationSeeder::class);
+        $this->call(CategorySeeder::class);
+        /*  The seeders of generated crud will set here: Don't remove this line  */
     }
 }

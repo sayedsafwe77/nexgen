@@ -29,7 +29,7 @@ class Product extends Model implements HasMedia, TranslatableContract
      *
      * @var array
      */
-    public $translatedAttributes = ['name','description'];
+    public $translatedAttributes = ['name', 'description'];
 
     /**
      * The attributes that are mass assignable.
@@ -73,7 +73,7 @@ class Product extends Model implements HasMedia, TranslatableContract
     }
     public function qutation()
     {
-        return $this->belongsToMany(Qutation::class,'product_qutations');
+        return $this->belongsToMany(Qutation::class, 'product_qutations');
     }
     public function productQutation()
     {

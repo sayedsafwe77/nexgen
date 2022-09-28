@@ -11,7 +11,7 @@ class ProductTranslation extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description'];
 
     /**
      * Indicates if the model should be timestamped.

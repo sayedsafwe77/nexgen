@@ -9,7 +9,7 @@ use App\Models\Category;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Http\Request ;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
 class ProductController extends Controller
@@ -33,7 +33,7 @@ class ProductController extends Controller
     {
         $products = Product::filter()->paginate();
         $categories = Category::select('id')->get()->toArray();
-        return view('dashboard.products.index', compact('products','categories'));
+        return view('dashboard.products.index', compact('products', 'categories'));
     }
 
     /**
@@ -108,14 +108,14 @@ class ProductController extends Controller
     }
     public function createInput(Request $request)
     {
-        $input = ['type'=>$request->input_type ,'name'=>$request->input_name ];
+        $input = ['type' => $request->input_type, 'name' => $request->input_name];
         $generated_inputs = json_decode(file_get_contents(storage_path('generated_inputs.json')));
         $generated_inputs[] = $input;
-        file_put_contents(storage_path('generated_inputs.json'),json_encode($generated_inputs));
-        Schema::table('products', function (Blueprint $table) use($request) {
-            if($request->input_type == 'number'){
+        file_put_contents(storage_path('generated_inputs.json'), json_encode($generated_inputs));
+        Schema::table('products', function (Blueprint $table) use ($request) {
+            if ($request->input_type == 'number') {
                 $table->integer($request->input_name)->nullable();
-            }else{
+            } else {
                 $table->string($request->input_name)->nullable();
             }
         });
@@ -138,7 +138,7 @@ class ProductController extends Controller
         return redirect()->route('dashboard.products.index');
     }
 
-   /**
+    /**
      * Display a listing of the trashed resource.
      *
      * @return \Illuminate\Http\Response
