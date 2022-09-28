@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->float('price');
             $table->float('discount')->default(0);
             $table->boolean('interface')->default(0);
+            $table->text('comment')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

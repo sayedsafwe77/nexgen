@@ -1,8 +1,7 @@
 @include('dashboard.errors')
 @bsMultilangualFormTabs
     {{ BsForm::text('name') }}
-    {{ BsForm::text('description')
-}}
+    {{ BsForm::text('description') }}
 @endBsMultilangualFormTabs
 <div class="row">
     <div class="col-lg-3 col-md-6 col-sm-12">
@@ -13,21 +12,16 @@
     </div>
     {{-- categories.select --}}
     <div class="col-lg-3 col-md-6 col-sm-12">
-        <select2
-        placeholder="@lang('categories.attributes.name')"
-        name="category_id"
-            label='@lang('categories.attributes.name')'
-            value=""
-            remote-url="{{ route('api.categories.select') }}"
-        ></select2>
+        <select2 placeholder="@lang('categories.attributes.name')" name="category_id" label='@lang('categories.attributes.name')'
+            value="{{ isset($product) ? $product->category_id : '' }}" remote-url="{{ route('api.categories.select') }}">
+        </select2>
     </div>
 </div>
 <div class="row">
-      {{ BsForm::checkbox('interface')
-        ->withoutDefault()
-        ->value(1)->default('0')
-        ->label(trans('products.attributes.interface'))
-        ->checked(isset($product) && $product->interface) }}
+    {{ BsForm::checkbox('interface')->withoutDefault()->value(1)->default('0')->label(trans('products.attributes.interface'))->checked(isset($product) && $product->interface) }}
+</div>
+<div class="row">
+    {{ BsForm::text('comment') }}
 </div>
 <div class="row">
     @foreach (get_generated_inputs() as $input)
@@ -40,8 +34,7 @@
 
 
 @isset($product)
-{{ BsForm::image('product_images')->unlimited()->files($product->getMediaResource()) }}
+    {{ BsForm::image('product_images')->unlimited()->files($product->getMediaResource()) }}
 @else
     {{ BsForm::image('product')->unlimited() }}
 @endisset
-
