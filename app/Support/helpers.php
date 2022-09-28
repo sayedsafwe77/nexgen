@@ -2,7 +2,7 @@
 
 use App\Models\Product;
 
-if (! function_exists('app_copyright')) {
+if (!function_exists('app_copyright')) {
     /**
      * Get the application copyright.
      *
@@ -13,7 +13,7 @@ if (! function_exists('app_copyright')) {
         return Settings::locale()->get('copyright');
     }
 }
-if (! function_exists('get_products')) {
+if (!function_exists('get_products')) {
     /**
      * Get the application copyright.
      *
@@ -24,7 +24,7 @@ if (! function_exists('get_products')) {
         return Product::get();
     }
 }
-if (! function_exists('get_generated_inputs')) {
+if (!function_exists('get_generated_inputs')) {
     /**
      * Get the application copyright.
      *
@@ -36,7 +36,7 @@ if (! function_exists('get_generated_inputs')) {
     }
 }
 
-if (! function_exists('app_name')) {
+if (!function_exists('app_name')) {
     /**
      * Get the application name.
      *
@@ -50,7 +50,7 @@ if (! function_exists('app_name')) {
     }
 }
 
-if (! function_exists('app_logo')) {
+if (!function_exists('app_logo')) {
     /**
      * Get the application logo url.
      *
@@ -62,17 +62,17 @@ if (! function_exists('app_logo')) {
             return $file;
         }
 
-        return 'https://ui-avatars.com/api/?name='.rawurldecode(config('app.name')).'&bold=true';
+        return 'https://ui-avatars.com/api/?name=' . rawurldecode(config('app.name')) . '&bold=true';
     }
 }
 
-if (! function_exists('array_unset_by_value')) {
+if (!function_exists('array_unset_by_value')) {
     /**
      * unset value from array .
      *
      * @return string
      */
-    function array_unset_by_value($array , $value )
+    function array_unset_by_value($array, $value)
     {
         if (($key = array_search($value, $array)) !== false) {
             unset($array[$key]);
@@ -82,14 +82,15 @@ if (! function_exists('array_unset_by_value')) {
 
 
 
-if (! function_exists('generateRandomString')) {
+if (!function_exists('generateRandomString')) {
     /**
      * Get the application logo url.
      *
      * @return string
      */
 
-    function generateRandomString($length = 10) {
+    function generateRandomString($length = 10)
+    {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
@@ -100,23 +101,22 @@ if (! function_exists('generateRandomString')) {
     }
 }
 
-if (! function_exists('str_limit')) {
+if (!function_exists('str_limit')) {
     /**
      * str limit of string
      *
      * @return string
      */
 
-    function str_limit($string ,$limit = 150 , $end = '...')
+    function str_limit($string, $limit = 150, $end = '...')
     {
-        return Str::limit($string, $limit ,$end) ;
-
+        return Str::limit($string, $limit, $end);
     }
 }
 
 
 
-if (! function_exists('app_favicon')) {
+if (!function_exists('app_favicon')) {
     /**
      * Get the application favicon url.
      *
@@ -132,7 +132,7 @@ if (! function_exists('app_favicon')) {
     }
 }
 
-if (! function_exists('count_formatted')) {
+if (!function_exists('count_formatted')) {
     /**
      * Format numbers to nearest thousands such as
      * Kilos, Millions, Billions, and Trillions with comma.
@@ -148,7 +148,7 @@ if (! function_exists('count_formatted')) {
             $x_array = explode(',', $x_number_format);
             $x_parts = ['K', 'M', 'B', 'T'];
             $x_count_parts = count($x_array) - 1;
-            $x_display = $x_array[0].((int) $x_array[1][0] !== 0 ? '.'.$x_array[1][0] : '');
+            $x_display = $x_array[0] . ((int) $x_array[1][0] !== 0 ? '.' . $x_array[1][0] : '');
             $x_display .= $x_parts[$x_count_parts - 1];
 
             return $x_display;

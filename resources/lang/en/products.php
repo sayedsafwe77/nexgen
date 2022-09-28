@@ -36,6 +36,7 @@ return [
         'category_id' => 'category',
         'category' => 'category',
         'description' => 'Description',
+        'comment' => 'Comment',
         'input_type' => 'input type',
         'input_name' => 'input name',
         'price' => 'Price',

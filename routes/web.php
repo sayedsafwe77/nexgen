@@ -18,6 +18,11 @@ Route::middleware('dashboard.locales')->group(function () {
     Auth::routes();
 });
 
+Route::get('/test', function () {
+    return view('test');
+});
+
+
 Route::impersonate();
 Route::get('locale/{locale}', 'LocaleController@update')->name('locale')->where('locale', '(ar|en)');
 

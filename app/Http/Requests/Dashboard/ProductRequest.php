@@ -26,6 +26,8 @@ class ProductRequest extends FormRequest
     {
         return RuleFactory::make([
             '%name%' => ['required', 'string', 'max:255'],
+            'category_id' => ['required', 'exists:category,id'],
+            'price' => ['required'],
         ]);
     }
 
