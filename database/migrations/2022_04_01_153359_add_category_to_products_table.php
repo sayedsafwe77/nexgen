@@ -16,6 +16,7 @@ class AddCategoryToProductsTable extends Migration
         Schema::table('products', function (Blueprint $table) {
             //
             $table->foreignId('category_id')->nullable();
+
             $table->foreign('category_id')->references('id')->on('categories');
         });
     }
