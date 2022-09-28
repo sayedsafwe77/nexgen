@@ -36,5 +36,5 @@
 @isset($product)
     {{ BsForm::image('product_images')->unlimited()->files($product->getMediaResource()) }}
 @else
-    {{ BsForm::image('product')->unlimited() }}
+    {{ BsForm::image('product_images')->unlimited() }}
 @endisset
