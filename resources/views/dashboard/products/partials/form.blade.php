@@ -5,15 +5,25 @@
 @endBsMultilangualFormTabs
 <div class="row">
     <div class="col-lg-3 col-md-6 col-sm-12">
-        {{ BsForm::number('price') }}
+        {{ BsForm::text('code') }}
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        {{ BsForm::text('price') }}
     </div>
     <div class="col-lg-3 col-md-6 col-sm-12">
         {{ BsForm::number('discount') }}
     </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        {{ BsForm::text('function') }}
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        {{ BsForm::number('quantity') }}
+    </div>
     {{-- categories.select --}}
     <div class="col-lg-3 col-md-6 col-sm-12">
         <select2 placeholder="@lang('categories.attributes.name')" name="category_id" label='@lang('categories.attributes.name')'
-            value="{{ isset($product) ? $product->category_id : '' }}" remote-url="{{ route('api.categories.select') }}">
+            value="{{ isset($product) ? $product->category_id : '' }}"
+            remote-url="{{ route('api.categories.select') }}">
         </select2>
     </div>
 </div>

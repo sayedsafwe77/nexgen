@@ -1,41 +1,12 @@
 @include('dashboard.errors')
-@push('styles')
-    <style>
-        .new-customer {
-            outline-style: none;
-            background: rgb(6, 6, 92);
-            border-radius: 15px;
-            padding: 7px;
-            /* float: right; */
-            margin-left: 3%;
-            font-size: 14px;
-            display: inline-block;
-            color: white;
-        }
-
-        .new-customer:hover {
-            background-color: rgb(2, 83, 2);
-            cursor: pointer;
-            color: white;
-        }
-
-        .customer-container {
-            display: none;
-        }
-
-        .btn-primary {
-            height: 65%;
-        }
-    </style>
-@endpush
 
 <div class="row">
-    <div class="col-2">
+    <div class="col-lg-2 col-md-6 col-ls-9 ">
         <select2 placeholder="@lang('categories.attributes.name')" class="select2-customer-nme" name="category_id"
             value="{{ request('category_id') }}" {{-- label="@lang('categories.attributes.name')" --}} remote-url="{{ route('api.categories.select') }}">
         </select2>
     </div>
-    <div class="col-1">
+    <div class="col-lg-1 col-sm-2">
         <button formaction='{{ route('dashboard.qutations.create') }}' formmethod='get'
             class="btn btn-primary">find</button>
     </div>

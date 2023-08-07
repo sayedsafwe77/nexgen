@@ -17,13 +17,28 @@ class ProductResource extends JsonResource
 
         if ($request->example_excel) {
             return [
+                'code' => $this->code,
                 'name' => $this->name,
+                'description' => $this->description,
+                'price' => $this->price,
+                'quantity' => $this->quantity,
+                'function' => $this->function,
+                'model_number' => $this->model_number,
+                'discount' => $this->discount,
+                'comment' => $this->comment,
             ];
         }
 
         return [
-            'id' => $this->id,
+            'code' => $this->code,
             'name' => $this->name,
+            'description' => $this->description,
+            'price' => $this->price,
+            'quantity' => $this->quantity,
+            'function' => $this->function,
+            'model_number' => $this->model_number,
+            'discount' => $this->discount,
+            'comment' => $this->comment,
         ];
     }
 }

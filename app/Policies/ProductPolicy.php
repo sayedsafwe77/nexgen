@@ -69,7 +69,7 @@ class ProductPolicy
         return $user->isAdmin() || $user->hasPermissionTo('manage.products');
     }
 
-     /**
+    /**
      * Determine whether the user can view trashed products.
      *
      * @param \App\Models\User $user

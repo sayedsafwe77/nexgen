@@ -24,10 +24,11 @@ class ImportRequest extends FormRequest
      */
     public function rules()
     {
-
         return RuleFactory::make([
-            'file' => 'required|mimes:xlsx' //a required, max 10000kb, doc or docx file
+            'file' => 'required|mimes:xlsx', //a required, max 10000kb, doc or docx file
             // '%name%' => ['required', 'string', 'max:255'],
+            // '%description%' => ['required', 'string', 'max:255'],
+            // 'price' => ['required', 'integer'],
         ]);
     }
     /**
@@ -37,6 +38,6 @@ class ImportRequest extends FormRequest
      */
     public function attributes()
     {
-        return RuleFactory::make(trans('cities.attributes'));
+        return RuleFactory::make(trans('products.attributes'));
     }
 }

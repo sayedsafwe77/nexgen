@@ -146,10 +146,11 @@ class ProductController extends Controller
     public function trashed()
     {
         $this->authorize('viewTrash', Product::class);
-
         $products = Product::onlyTrashed()->paginate();
+        $categories = Category::select('id')->get()->toArray();
 
-        return view('dashboard.products.trashed', compact('products'));
+
+        return view('dashboard.products.trashed', compact('products', 'categories'));
     }
 
     /**

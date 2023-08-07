@@ -21,8 +21,10 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+        $currency = ["EGP", 'USD'];
         return [
             'name' => $this->faker->word,
+            'currency' => $currency[array_rand($currency)],
         ];
     }
 }

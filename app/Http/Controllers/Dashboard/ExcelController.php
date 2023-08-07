@@ -23,16 +23,12 @@ class ExcelController extends Controller
     public function import(ImportRequest $request)
     {
 
-
         try {
             if (class_exists($modelClass = $request->input('model'))) {
                 if (class_exists($importClass = $request->input('import'))) {
-
-
-                    $array = (new $importClass)->toArray( request()->file('file'));
+                    $array = (new $importClass)->toArray(request()->file('file'));
                     $request->request->add(['data' => $array[0]]); //add request
                     $validator = Validator::make($request->all(), (new $importClass)->rules());
-
                     // Check validation failure
                     if ($validator->fails()) {
                         flash(trans('excel.messages.import_failed', [
@@ -44,20 +40,19 @@ class ExcelController extends Controller
 
                     // Check validation success
                     if ($validator->passes()) {
-                        if (count($request->data) > 50) {
-                            $datas = array_chunk($request->data , 10);
-                            foreach ($datas as $key => $data) {
-                                dispatch(new SaveExcelImportingJob($data ,$modelClass ));
-                            }
-                        }else{
-                            foreach ($request->data as $key => $value) {
-                                $modelClass::create(Arr::except($value , ['created_at' , 'id' , 'created_at_formatted' , 'avatar']));
-                            }
+                        foreach ($request->data as $key => $value) {
+                            $modelClass::create(Arr::except($value, ['created_at', 'id', 'created_at_formatted', 'avatar']));
                         }
-
-
-
-
+                        // if (count($request->data) > 50) {
+                        //     $datas = array_chunk($request->data, 10);
+                        //     foreach ($datas as $key => $data) {
+                        //         dispatch(new SaveExcelImportingJob($data, $modelClass));
+                        //     }
+                        // } else {
+                        //     foreach ($request->data as $key => $value) {
+                        //         $modelClass::create(Arr::except($value, ['created_at', 'id', 'created_at_formatted', 'avatar']));
+                        //     }
+                        // }
                     }
                 }
             }
@@ -83,39 +78,32 @@ class ExcelController extends Controller
      */
     public function export(Request $request)
     {
-
         if (class_exists($modelClass = $request->input('model'))) {
-
             if ($request->example_excel) {
                 $models = $modelClass::factory(2)->make();
-            }else{
+            } else {
                 $models = $modelClass::filter()->get();
             }
-            $Resource =  $this->getResource($models , $resourceClass = $request->input('resource'));
-
+            $Resource =  $this->getResource($models, $resourceClass = $request->input('resource'));
             if (class_exists($exportClass = $request->input('export'))) {
-                return Excel::download(new $exportClass($Resource),($request->example_excel ? 'example-' : "") .  $request->file_name.'-'.date('d-m-Y-h-i').'.xlsx');
+                return Excel::download(new $exportClass($Resource), ($request->example_excel ? 'example-' : "") .  $request->file_name . '-' . date('d-m-Y-h-i') . '.xlsx');
             }
         }
 
         return back();
     }
 
-     /**
+    /**
      * get Resource Data By data Given .
      *
      * @param \Illuminate\Http\Request $request
      * @return data Collection
      */
-    public function getResource($models , $resourceClass)
+    public function getResource($models, $resourceClass)
     {
-        if (count($models) && class_exists($resourceClass) ) {
+        if (count($models) && class_exists($resourceClass)) {
             return $resourceClass::collection($models);
         }
         return null;
     }
-
-
-
-
 }

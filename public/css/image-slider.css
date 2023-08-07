@@ -77,6 +77,32 @@
     cursor: pointer;
 }
 
+.new-customer {
+    outline-style: none;
+    background: rgb(6, 6, 92);
+    border-radius: 15px;
+    padding: 7px;
+    /* float: right; */
+    margin-left: 3%;
+    font-size: 14px;
+    display: inline-block;
+    color: white;
+}
+
+.new-customer:hover {
+    background-color: rgb(2, 83, 2);
+    cursor: pointer;
+    color: white;
+}
+
+.customer-container {
+    display: none;
+}
+
+.btn-primary {
+    height: 65%;
+}
+
 @media screen and (max-width: 820px) {
     .image-container {
         left: 15%;

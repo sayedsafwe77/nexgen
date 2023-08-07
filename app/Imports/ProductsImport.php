@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\Importable;
 
-class ProductsImport implements ToModel,WithValidation,WithHeadingRow
+class ProductsImport implements ToModel, WithValidation, WithHeadingRow
 {
 
     use Importable;
@@ -24,10 +24,10 @@ class ProductsImport implements ToModel,WithValidation,WithHeadingRow
 
 
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function model(array $row)
     {
         if (!isset($row[0])) {
@@ -41,8 +41,9 @@ class ProductsImport implements ToModel,WithValidation,WithHeadingRow
     public function rules(): array
     {
         return [
-            'data.*.name' => 'required|string|max:255|unique:products,name',
+            'data.*.name' => 'required|string|max:255',
+            'data.*.description' => 'required|string|max:255',
+            'data.*.price' => 'required|integer',
         ];
     }
-
 }
