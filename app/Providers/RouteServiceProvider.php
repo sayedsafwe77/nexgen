@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
+    public const HOME = '/';
 
     /**
      * If specified, this namespace is automatically applied to your controller routes.
@@ -38,7 +38,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::namespace($this->namespace.'\Dashboard')
+            Route::namespace($this->namespace . '\Dashboard')
                 ->middleware('dashboard')
                 ->as('dashboard.')
                 ->group(base_path('routes/dashboard.php'));
@@ -48,7 +48,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
 
             Route::prefix('api')
-                ->namespace($this->namespace.'\Api')
+                ->namespace($this->namespace . '\Api')
                 ->middleware('api')
                 ->as('api.')
                 ->group(base_path('routes/api.php'));

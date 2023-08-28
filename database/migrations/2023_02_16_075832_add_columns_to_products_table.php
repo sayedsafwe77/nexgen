@@ -17,7 +17,7 @@ class AddColumnsToProductsTable extends Migration
             //
             $table->string('code')->unique();
             $table->string('function')->nullable();
-            $table->integer('quantity')->default(0);
+            $table->integer('quantity')->nullable()->default(0);
         });
     }
 

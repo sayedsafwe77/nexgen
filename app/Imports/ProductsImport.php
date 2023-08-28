@@ -41,9 +41,10 @@ class ProductsImport implements ToModel, WithValidation, WithHeadingRow
     public function rules(): array
     {
         return [
-            'data.*.name' => 'required|string|max:255',
-            'data.*.description' => 'required|string|max:255',
-            'data.*.price' => 'required|integer',
+            'data.*.name' => 'sometimes|string|nullable|max:255',
+            'data.*.description' => 'sometimes|nullable|string',
+            'data.*.price' => 'required|numeric',
+            'data.*.code' => ['required', Rule::unique('products', 'code')],
         ];
     }
 }

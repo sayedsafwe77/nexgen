@@ -10,7 +10,9 @@ use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use App\Jobs\SaveExcelImportingJob;
+use Exception;
 use Illuminate\Support\Arr;
+use Illuminate\Validation\ValidationException;
 
 class ExcelController extends Controller
 {
@@ -29,34 +31,26 @@ class ExcelController extends Controller
                     $array = (new $importClass)->toArray(request()->file('file'));
                     $request->request->add(['data' => $array[0]]); //add request
                     $validator = Validator::make($request->all(), (new $importClass)->rules());
-                    // Check validation failure
                     if ($validator->fails()) {
                         flash(trans('excel.messages.import_failed', [
                             'type' => $request->input('resource'),
-                        ]))->error();
-
+                        ]))->error(implode('<br>', $validator->errors()->all()));
                         return redirect()->back();
                     }
-
-                    // Check validation success
                     if ($validator->passes()) {
                         foreach ($request->data as $key => $value) {
                             $modelClass::create(Arr::except($value, ['created_at', 'id', 'created_at_formatted', 'avatar']));
                         }
-                        // if (count($request->data) > 50) {
-                        //     $datas = array_chunk($request->data, 10);
-                        //     foreach ($datas as $key => $data) {
-                        //         dispatch(new SaveExcelImportingJob($data, $modelClass));
-                        //     }
-                        // } else {
-                        //     foreach ($request->data as $key => $value) {
-                        //         $modelClass::create(Arr::except($value, ['created_at', 'id', 'created_at_formatted', 'avatar']));
-                        //     }
-                        // }
                     }
                 }
             }
-        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+        } catch (ValidationException $e) {
+            $errorCode = $e->getCode();
+            flash(trans('excel.messages.import_failed', [
+                'type' => $request->input('resource'),
+            ]))->error(implode('<br>', $validator->errors()->all()));
+            return redirect()->back();
+        } catch (Exception  $e) {
             flash(trans('excel.messages.import_failed', [
                 'type' => $request->input('resource'),
             ]))->error();
