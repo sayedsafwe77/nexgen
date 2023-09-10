@@ -51,4 +51,8 @@ class Category extends Model implements TranslatableContract
      * @var string
      */
     protected $filter = CategoryFilter::class;
+    function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

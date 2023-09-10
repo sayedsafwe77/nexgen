@@ -19,13 +19,10 @@ Breadcrumbs::for('dashboard.qutations.create', function ($breadcrumb) {
 
 Breadcrumbs::for('dashboard.qutations.show', function ($breadcrumb, $qutation) {
     $breadcrumb->parent('dashboard.qutations.index');
-    $breadcrumb->push($qutation->qutationable->name, route('dashboard.qutations.show', $qutation));
+    $breadcrumb->push($qutation->qutationable->name ?? 'qutation', route('dashboard.qutations.show', $qutation));
 });
 
 Breadcrumbs::for('dashboard.qutations.edit', function ($breadcrumb, $qutation) {
     $breadcrumb->parent('dashboard.qutations.show', $qutation);
     $breadcrumb->push(trans('qutations.actions.edit'), route('dashboard.qutations.edit', $qutation));
 });
-
-
-

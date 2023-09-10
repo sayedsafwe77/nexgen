@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Category;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\Dashboard\CategoryRequest;
+use App\Models\Product;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -65,7 +67,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('dashboard.categories.show', compact('category'));
+        $products = Product::where('category_id', null)->paginate(7);
+        return view('dashboard.categories.show', compact('category', 'products'));
     }
 
     /**
@@ -86,12 +89,15 @@ class CategoryController extends Controller
      * @param \App\Models\Category $category
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(CategoryRequest $request, Category $category)
+    public function update(Request $request, Category $category)
     {
         $category->update($request->all());
-
+        if ($request->has('items')) {
+            foreach ($request->items as $item) {
+                Product::where('id', $item)->update(['category_id' => $category->id]);
+            }
+        }
         flash(trans('categories.messages.updated'));
-
         return redirect()->route('dashboard.categories.show', $category);
     }
 

@@ -261,6 +261,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-sm-6">
                             <div class="d-flex float-sm-right">
                                 @isset($breadcrumbs)
+                                    {{-- @dd(...$breadcrumbs) --}}
                                     {{ Breadcrumbs::render(...$breadcrumbs) }}
                                 @endisset
                             </div>

@@ -24,13 +24,10 @@ Breadcrumbs::for('dashboard.products.input', function ($breadcrumb) {
 
 Breadcrumbs::for('dashboard.products.show', function ($breadcrumb, $product) {
     $breadcrumb->parent('dashboard.products.index');
-    $breadcrumb->push($product->name, route('dashboard.products.show', $product));
+    $breadcrumb->push($product->name ?? 'product', route('dashboard.products.show', $product));
 });
 
 Breadcrumbs::for('dashboard.products.edit', function ($breadcrumb, $product) {
     $breadcrumb->parent('dashboard.products.show', $product);
     $breadcrumb->push(trans('products.actions.edit'), route('dashboard.products.edit', $product));
 });
-
-
-

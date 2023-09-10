@@ -19,13 +19,10 @@ Breadcrumbs::for('dashboard.categories.create', function ($breadcrumb) {
 
 Breadcrumbs::for('dashboard.categories.show', function ($breadcrumb, $category) {
     $breadcrumb->parent('dashboard.categories.index');
-    $breadcrumb->push($category->name, route('dashboard.categories.show', $category));
+    $breadcrumb->push($category->name ?? 'category', route('dashboard.categories.show', $category));
 });
 
 Breadcrumbs::for('dashboard.categories.edit', function ($breadcrumb, $category) {
     $breadcrumb->parent('dashboard.categories.show', $category);
     $breadcrumb->push(trans('categories.actions.edit'), route('dashboard.categories.edit', $category));
 });
-
-
-
