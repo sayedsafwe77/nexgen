@@ -27,9 +27,7 @@ class QutationRequest extends FormRequest
             'qutationable_id' => ['required_unless:exist-customer,1'],
             'category_id' => ['required'],
             'customer-name' => ['required_if:exist-customer,1'],
-            'email' => ['required_if:exist-customer,1'],
             'phone' => ['required_if:exist-customer,1'],
-            'address' => ['required_if:exist-customer,1'],
         ];
     }
 
