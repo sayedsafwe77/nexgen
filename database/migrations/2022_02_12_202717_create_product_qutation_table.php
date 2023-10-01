@@ -15,8 +15,8 @@ class CreateProductQutationTable extends Migration
     {
         Schema::create('product_qutation', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained();
-            $table->foreignId('qutation_id')->constrained();
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('qutation_id')->constrained()->cascadeOnDelete();
             $table->integer('quantity');
             $table->timestamps();
         });
