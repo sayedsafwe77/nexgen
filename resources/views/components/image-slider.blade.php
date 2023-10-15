@@ -1,7 +1,3 @@
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('css/image-slider.css') }}">
-@endpush
-
 <img class="product-image" onclick="toggleImages(this)" src="{{ $product->first()['url'] }}">
 <div class="image-slider-wrapper display-none">
     <div class="image-container">

@@ -32,6 +32,7 @@ return [
         'customer-name' => 'Customer name',
         'product_count' => 'count',
         'owner' => 'Owner',
+        'discount' => 'Discount',
         'created_at' => 'Created At',
         'deleted_at' => 'Deleted At',
     ],

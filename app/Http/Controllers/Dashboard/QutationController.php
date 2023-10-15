@@ -30,7 +30,7 @@ class QutationController extends Controller
      */
     public function index()
     {
-        $qutations = Qutation::filter()->orderBy('created_at','DESC')->paginate();
+        $qutations = Qutation::filter()->orderBy('created_at', 'DESC')->paginate();
         return view('dashboard.qutations.index', compact('qutations'));
     }
 
@@ -41,14 +41,14 @@ class QutationController extends Controller
      */
     public function create()
     {
-        $products = Product::where(function($q){
-            if(request()->has('category_id')){
-                $q->whereHas('category',function($q) {
-                    $q->where('id',request('category_id'));
+        $products = Product::where(function ($q) {
+            if (request()->has('category_id')) {
+                $q->whereHas('category', function ($q) {
+                    $q->where('id', request('category_id'));
                 });
             }
-        })->get();
-        return view('dashboard.qutations.create',compact('products'));
+        })->paginate(5);
+        return view('dashboard.qutations.create', compact('products'));
     }
 
     /**
@@ -59,17 +59,17 @@ class QutationController extends Controller
      */
     public function store(QutationRequest $request)
     {
-        $products = Product::whereIn('id',$request->items)->get();
-        if($request->qutationable_id){
-            $user = Customer::where('id',$request->qutationable_id)->select('id')->first();
-        }else{
-            $custmer = $request->only('customer-name','email','phone','address');
+        $products = Product::whereIn('id', $request->items)->get();
+        if ($request->qutationable_id) {
+            $user = Customer::where('id', $request->qutationable_id)->select('id')->first();
+        } else {
+            $custmer = $request->only('customer-name', 'email', 'phone', 'address');
             $custmer['name'] = $custmer['customer-name'];
-           $user =  Customer::create($custmer);
+            $user =  Customer::create($custmer);
         }
-        $qutation = $user->qutations()->create(['name' =>$request->name,$user]);
+        $qutation = $user->qutations()->create(['name' => $request->name, $user, 'discount' => $request->discount]);
         $sub_total = 0;
-        $products->map(function($item) use($request , &$sub_total){
+        $products->map(function ($item) use ($request, &$sub_total) {
             $count = "count-$item[id]";
             $item['quantity'] = $request[$count];
             $sub_total += ($item['price'] * $item['quantity']);
@@ -78,13 +78,13 @@ class QutationController extends Controller
         $qutation->sub_total = $sub_total;
         $qutation->category_id = $request->category_id;
         $qutation->installation_fees = Settings::get('additional');
-        $qutation->total = $sub_total + ((Settings::get('additional') /100) * $sub_total);
+        $qutation->total = $sub_total + ((Settings::get('additional') / 100) * $sub_total);
         $qutation->save();
-        $product_quantity=[];
-        foreach($products as $product){
+        $product_quantity = [];
+        foreach ($products as $product) {
             $count = "count-$product->id";
             $product_quantity['quantity'] = $request[$count];
-            $qutation->products()->attach($product,$product_quantity);
+            $qutation->products()->attach($product, $product_quantity);
         }
         flash(trans('qutations.messages.created'));
 

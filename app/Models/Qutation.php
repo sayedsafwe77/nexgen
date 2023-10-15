@@ -43,6 +43,7 @@ class Qutation extends Model
         'installation_fees',
         'qutationable_id',
         'qutationable_type',
+        'discount'
     ];
 
     // public function getEntityTypeAttribute($type)
@@ -56,7 +57,7 @@ class Qutation extends Model
     // }
     public function products()
     {
-        return $this->belongsToMany(Product::class,'product_qutations')->withPivot('quantity');
+        return $this->belongsToMany(Product::class, 'product_qutations')->withPivot('quantity');
     }
     public function productQutation()
     {
@@ -68,6 +69,6 @@ class Qutation extends Model
     }
     public function customer()
     {
-        return $this->belongsTo(Customer::class,'qutationable_id');
+        return $this->belongsTo(Customer::class, 'qutationable_id');
     }
 }

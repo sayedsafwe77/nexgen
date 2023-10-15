@@ -5,6 +5,9 @@
         @include('dashboard.qutations.partials.form')
 
         @slot('footer')
+            @if ($products->hasPages())
+                {{ $products->links() }}
+            @endif
             {{ BsForm::submit()->label(trans('qutations.actions.save')) }}
         @endslot
     @endcomponent

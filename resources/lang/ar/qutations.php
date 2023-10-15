@@ -31,6 +31,7 @@ return [
         'name' => 'اسم عروض الاسعار',
         'product_count' => 'العدد',
         'owner' => 'صاحب عروض الاسعار',
+        'discount' => 'الخصم',
         'created_at' => 'اضافة في',
         'deleted_at' => 'حذف في',
     ],

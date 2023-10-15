@@ -1,5 +1,7 @@
 @include('dashboard.errors')
-
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/image-slider.css') }}">
+@endpush
 <div class="row">
     <div class="col-lg-2 col-md-6 col-ls-9 ">
         <select2 placeholder="@lang('categories.attributes.name')" class="select2-customer-nme" name="category_id"
@@ -29,6 +31,9 @@
     {{ BsForm::text('phone')->label(trans('customers.attributes.phone')) }}
     {{ BsForm::text('address')->label(trans('customers.attributes.address')) }}
 </div>
+<div>
+    {{ BsForm::number('discount')->label(trans('qutations.attributes.discount')) }}
+</div>
 @component('dashboard::components.table-box')
     <thead class="thead-dark">
         <tr>
@@ -50,7 +55,7 @@
                 <td class="product-count-{{ $product->id }}">
                     {{ BsForm::number('count-' . $product->id)->attribute('disabled', 'disabled')->value(1) }}</td>
                 <td>{{ $product->name }}</td>
-                <td>{{ $product->category->name }}</td>
+                <td>{{ $product->category->name ?? '' }}</td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->discount }}</td>
                 @if ($product->getFirstMedia())
@@ -67,8 +72,12 @@
     <script>
         $('.new-customer').on('click', newCustomer);
         let toggle_create_cutomer = 1;
+        console.log({
+            toggle_create_cutomer
+        });
 
         function newCustomer(params) {
+            console.log('newCustomer');
             if (toggle_create_cutomer) {
                 $('#exist-customer').attr('value', '1');
                 $('.select-customer').fadeOut(500, () => {
