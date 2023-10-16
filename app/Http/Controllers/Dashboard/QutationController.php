@@ -47,7 +47,7 @@ class QutationController extends Controller
                     $q->where('id', request('category_id'));
                 });
             }
-        })->paginate(5);
+        })->get();
         return view('dashboard.qutations.create', compact('products'));
     }
 

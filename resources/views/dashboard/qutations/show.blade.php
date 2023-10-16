@@ -126,7 +126,7 @@
                                 <h3> Total with installation in {{ $qutation->category->currency }}
                                 </h3>
                             </td>
-                            <td> {{ $qutation->total }}</td>
+                            <td> {{ $qutation->total - ($qutation->discount * $qutation->sub_total) / 100 }}</td>
                         </tr>
                         <tr style="border-bottom: 2px solid black;text-align: start">
                             <td style="border: none" colspan="10">Terms and Conditions : </td>
