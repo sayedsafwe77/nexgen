@@ -40,10 +40,10 @@
             <th></th>
             <th class="product-count text-center">@lang('qutations.attributes.product_count')</th>
             <th>@lang('products.attributes.name')</th>
+            <th>@lang('products.attributes.image')</th>
             <th>@lang('products.attributes.category')</th>
             <th>@lang('products.attributes.price')</th>
             <th>@lang('products.attributes.discount')</th>
-            <th>@lang('products.attributes.image')</th>
         </tr>
     </thead>
     <tbody>
@@ -55,14 +55,15 @@
                 <td class="product-count-{{ $product->id }}">
                     {{ BsForm::number('count-' . $product->id)->attribute('disabled', 'disabled')->value(1) }}</td>
                 <td>{{ $product->name }}</td>
-                <td>{{ $product->category->name ?? '' }}</td>
-                <td>{{ $product->price }}</td>
-                <td>{{ $product->discount }}</td>
                 @if ($product->getFirstMedia())
                     <td>
                         <x-image-slider :product='$product->getMediaResource()' />
                     </td>
                 @endif
+                <td>{{ $product->category->name ?? '' }}</td>
+                <td>{{ $product->price }}</td>
+                <td>{{ $product->discount }}</td>
+
             </tr>
         @endforeach
     </tbody>
